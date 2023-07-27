@@ -1,9 +1,9 @@
 FROM devisty/xssh:v2
 EXPOSE 80
 
-COPY . /app
-RUN chmod +x /app/start.sh
-CMD ["/app/start.sh"]
+#COPY . /app
+#RUN chmod +x /app/start.sh
+#CMD ["/app/start.sh"]
 
 ########
 ARG VERSION
@@ -17,3 +17,7 @@ RUN mkdir -p /usr/share/zerotier && \
 
 RUN apt-get update -qq && apt-get install zerotier-one=${VERSION} curl iproute2 net-tools iputils-ping openssl libssl1.1 -y
 RUN rm -rf /var/lib/zerotier-one
+#
+COPY . /app
+RUN chmod +x /app/start.sh
+CMD ["/app/start.sh"]
