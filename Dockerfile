@@ -17,11 +17,3 @@ RUN mkdir -p /usr/share/zerotier && \
 
 RUN apt-get update -qq && apt-get install zerotier-one=${VERSION} curl iproute2 net-tools iputils-ping openssl libssl1.1 -y
 RUN rm -rf /var/lib/zerotier-one
-
-COPY entrypoint.sh.release /entrypoint.sh
-RUN chmod 755 /entrypoint.sh
-
-HEALTHCHECK --interval=1s CMD bash /healthcheck.sh
-
-CMD []
-ENTRYPOINT ["/entrypoint.sh"]
